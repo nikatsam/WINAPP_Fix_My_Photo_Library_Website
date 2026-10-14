@@ -67,7 +67,10 @@
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
         <div class="hero-note note-top"><span class="note-icon">↗</span><span><b>Content, not filenames</b><small>SHA-256 comparison</small></span></div>
         <figure class="hero-screen">
-          <img src="assets/screenshots/02-backup-check.png" alt="Sample Fix My Photo Library backup check showing a matching photo and a missing-content result" width="1366" height="768" fetchpriority="high">
+          <button class="image-expand" type="button" data-image-preview data-preview-caption="Backup comparison example · generated fixture data" aria-label="Expand backup comparison screenshot">
+            <img src="assets/screenshots/02-backup-check.png" alt="Sample Fix My Photo Library backup check showing a matching photo and a missing-content result" width="1366" height="768" fetchpriority="high">
+            <span class="expand-cue" aria-hidden="true">Expand image ↗</span>
+          </button>
           <figcaption>Example app screen · generated fixture data</figcaption>
         </figure>
         <div class="hero-note note-bottom"><span class="shield-mark" aria-hidden="true">✓</span><span><b>Nothing moves by surprise</b><small>Actions stay reviewable</small></span></div>
@@ -125,9 +128,9 @@
       <div class="section-kicker reveal"><span>03 / IN THE APP</span><span>Real interface captures · synthetic example data</span></div>
       <div class="proof-heading reveal"><h2 id="proof-title">See the result<br>before you <em>decide.</em></h2><p>These captures show the shipped app interface with generated fixture paths. They contain no customer photos.</p></div>
       <div class="screen-gallery">
-        <figure class="gallery-large reveal"><img src="assets/screenshots/03-photo-health.png" alt="Fix My Photo Library sample image check distinguishing healthy, decoding-failed and unsupported-codec files" width="1366" height="768" loading="lazy"><figcaption><b>Image health</b><span>Healthy, damaged and unsupported are different outcomes.</span></figcaption></figure>
-        <figure class="gallery-small reveal reveal-late"><img src="assets/screenshots/04-exact-duplicates.png" alt="Fix My Photo Library sample exact-duplicate group with a keeper available for review" width="1366" height="768" loading="lazy"><figcaption><b>Keeper review</b><span>You pin the copy that stays.</span></figcaption></figure>
-        <figure class="gallery-small reveal"><img src="assets/screenshots/05-date-review.png" alt="Fix My Photo Library sample camera-date preview showing an explicit timezone offset and a date requiring review" width="1366" height="768" loading="lazy"><figcaption><b>Date evidence</b><span>Offsets are visible. Missing zones are not guessed.</span></figcaption></figure>
+        <figure class="gallery-large reveal"><button class="image-expand" type="button" data-image-preview data-preview-caption="Image health example · generated fixture data" aria-label="Expand image health screenshot"><img src="assets/screenshots/03-photo-health.png" alt="Fix My Photo Library sample image check distinguishing healthy, decoding-failed and unsupported-codec files" width="1366" height="768" loading="lazy"><span class="expand-cue" aria-hidden="true">Expand image ↗</span></button><figcaption><b>Image health</b><span>Healthy, damaged and unsupported are different outcomes.</span></figcaption></figure>
+        <figure class="gallery-small reveal reveal-late"><button class="image-expand" type="button" data-image-preview data-preview-caption="Exact duplicate review example · generated fixture data" aria-label="Expand exact duplicates screenshot"><img src="assets/screenshots/04-exact-duplicates.png" alt="Fix My Photo Library sample exact-duplicate group with a keeper available for review" width="1366" height="768" loading="lazy"><span class="expand-cue" aria-hidden="true">Expand image ↗</span></button><figcaption><b>Keeper review</b><span>You pin the copy that stays.</span></figcaption></figure>
+        <figure class="gallery-small reveal"><button class="image-expand" type="button" data-image-preview data-preview-caption="Camera date review example · generated fixture data" aria-label="Expand photo date screenshot"><img src="assets/screenshots/05-date-review.png" alt="Fix My Photo Library sample camera-date preview showing an explicit timezone offset and a date requiring review" width="1366" height="768" loading="lazy"><span class="expand-cue" aria-hidden="true">Expand image ↗</span></button><figcaption><b>Date evidence</b><span>Offsets are visible. Missing zones are not guessed.</span></figcaption></figure>
       </div>
     </section>
 
@@ -167,6 +170,13 @@
     <div class="footer-main section-wrap"><a class="brand brand-footer" href="./"><img src="assets/favicon.svg" alt="" width="36" height="36"><span>FIX MY<br>PHOTO LIBRARY</span></a><p>Careful tools for photo libraries.<br>Designed for Windows. Made for real archives.</p><nav aria-label="Footer"><a href="faq/">FAQs</a><a href="privacy/">Privacy</a><a href="guides/verify-photo-backup/">Backup guide</a></nav></div>
     <div class="footer-bottom section-wrap"><span>© 2026 Fix My Photo Library</span><span>Store release and pricing are pending owner approval.</span><a href="#main">Back to top ↑</a></div>
   </footer>
+  <dialog class="image-lightbox" id="image-lightbox" aria-labelledby="image-lightbox-title">
+    <h2 class="sr-only" id="image-lightbox-title">Expanded screenshot preview</h2>
+    <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close expanded screenshot">Close <span aria-hidden="true">×</span></button>
+    <img id="image-lightbox-image" src="" alt="">
+    <p id="image-lightbox-caption"></p>
+    <p class="lightbox-instructions">Press Escape or click outside the image to close.</p>
+  </dialog>
   <script src="assets/site.js" defer></script>
 </body>
 </html>

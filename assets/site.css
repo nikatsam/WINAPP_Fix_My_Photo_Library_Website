@@ -62,7 +62,11 @@ h1 em, h2 em { font-family: var(--serif); font-weight: 400; }
 .orbit-one { width: min(42vw, 520px); aspect-ratio: 1; transform: rotate(-21deg) scaleY(.68); }
 .orbit-two { width: min(48vw, 600px); aspect-ratio: 1; transform: rotate(31deg) scaleY(.68); }
 .hero-screen { z-index: 1; width: min(100%, 630px); margin: 0; padding: 9px 9px 0; overflow: hidden; transform: rotate(2.2deg); border: 1px solid #262c2b; border-radius: 13px; background: #202625; box-shadow: 0 28px 70px rgb(23 27 28 / 23%); animation: screen-float 7s ease-in-out infinite; }
-.hero-screen img { width: 100%; border-radius: 7px 7px 0 0; }
+.hero-screen img { display: block; width: 100%; height: auto; aspect-ratio: 1366 / 768; object-fit: contain; border-radius: 7px 7px 0 0; }
+.image-expand { position: relative; display: block; width: 100%; height: auto; padding: 0; overflow: hidden; border: 0; background: transparent; color: inherit; cursor: zoom-in; text-align: left; }
+.expand-cue { position: absolute; right: 12px; bottom: 12px; padding: 8px 11px; transform: translateY(5px); border: 1px solid rgb(255 255 255 / 30%); border-radius: 999px; background: rgb(20 27 25 / 88%); color: #fff; opacity: 0; transition: opacity .2s ease, transform .2s ease; font: 10px var(--mono); }
+.image-expand:hover .expand-cue, .image-expand:focus-visible .expand-cue { transform: translateY(0); opacity: 1; }
+.hero-screen .image-expand { border-radius: 7px 7px 0 0; }
 .hero-screen figcaption { padding: 9px 10px; color: #d8ddd9; text-align: right; font: 9px var(--mono); }
 .hero-note { position: absolute; z-index: 3; display: flex; align-items: center; gap: 10px; padding: 12px 15px; border: 1px solid rgb(23 27 28 / 12%); border-radius: 12px; background: var(--white); box-shadow: 0 12px 35px rgb(23 27 28 / 10%); font-size: 10px; }
 .hero-note b, .hero-note small { display: block; }
@@ -114,8 +118,8 @@ h2 { margin-bottom: 0; font-size: clamp(44px, 5.7vw, 74px); line-height: 1.02; }
 .proof-heading p { max-width: 350px; margin: 0 0 7px; color: var(--muted); font-size: 13px; line-height: 1.65; }
 .screen-gallery { display: grid; grid-template-columns: 1.18fr .82fr; gap: 15px; align-items: start; }
 .screen-gallery figure { margin: 0; overflow: hidden; border: 1px solid #d3d1c8; border-radius: 10px; background: #e7e5dd; }
-.screen-gallery img { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top left; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
-.screen-gallery figure:hover img { transform: scale(1.025); }
+.screen-gallery img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; object-position: top left; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.screen-gallery figure:hover img { transform: scale(1.015); }
 .gallery-large { grid-row: span 2; }
 .gallery-caption, .screen-gallery figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; padding: 13px 15px; color: #4f5853; font-size: 10px; }
 .screen-gallery figcaption b { color: var(--ink); font-size: 11px; }
@@ -197,6 +201,14 @@ h2 { margin-bottom: 0; font-size: clamp(44px, 5.7vw, 74px); line-height: 1.02; }
 .page-cta p { margin: 0; color: #c3cac3; font-size: 13px; line-height: 1.7; }
 .privacy-updated { color: #6a746c; font: 10px var(--mono); }
 
+.image-lightbox { position: fixed; width: min(96vw, 1500px); max-width: none; max-height: 94vh; padding: 54px 20px 18px; overflow: auto; border: 1px solid #65706b; border-radius: 14px; background: #171d1b; color: #fff; }
+.image-lightbox::backdrop { background: rgb(10 15 13 / 88%); backdrop-filter: blur(5px); }
+.image-lightbox > img { display: block; width: auto; height: auto; max-width: 100%; max-height: 79vh; margin: 0 auto; object-fit: contain; }
+.image-lightbox > p { margin: 12px 0 0; color: #e1e7e1; text-align: center; font-size: 12px; }
+.image-lightbox > .lightbox-instructions { margin-top: 5px; color: #aab4ad; font: 9px var(--mono); }
+.lightbox-close { position: absolute; top: 12px; right: 14px; display: inline-flex; align-items: center; gap: 12px; padding: 8px 12px; border: 1px solid #64706a; border-radius: 999px; background: #2a3330; color: #fff; cursor: pointer; font: 11px var(--sans); }
+.lightbox-close span { font-size: 20px; line-height: .8; }
+
 .reveal { opacity: 1; transform: none; }
 .js-ready .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1); }
 .js-ready .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -222,7 +234,8 @@ h2 { margin-bottom: 0; font-size: clamp(44px, 5.7vw, 74px); line-height: 1.02; }
   .nav-cta { align-self: flex-start; }
   .hero { min-height: 0; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding-top: 62px; padding-bottom: 78px; }
   .hero-copy { padding-bottom: 10px; }
-  h1 { margin-top: 18px; font-size: clamp(54px, 15vw, 80px); }
+  h1 { max-width: 100%; min-width: 0; margin-top: 18px; font-size: clamp(34px, 10vw, 54px); overflow-wrap: normal; }
+  .hero-copy { width: 100%; min-width: 0; }
   .hero-lede { font-size: 15px; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 17px; }
   .trust-points { gap: 11px 14px; margin-top: 28px; font-size: 9px; }
@@ -230,8 +243,8 @@ h2 { margin-bottom: 0; font-size: clamp(44px, 5.7vw, 74px); line-height: 1.02; }
   .hero-screen { width: 94%; }
   .note-top { top: 15px; right: -2px; }
   .note-bottom { bottom: 5px; left: -2px; }
-  .orbit-one { width: 88vw; }
-  .orbit-two { width: 100vw; }
+  .orbit-one { width: 70vw; }
+  .orbit-two { width: 72vw; }
   .hero-ribbon { flex-wrap: wrap; justify-content: center; gap: 9px; min-height: 43px; font-size: 7px; }
   .hero-ribbon span:last-child, .hero-ribbon i:last-of-type { display: none; }
   .intro, .proof-section, .faq-teaser { padding-top: 78px; padding-bottom: 82px; }
@@ -258,7 +271,7 @@ h2 { margin-bottom: 0; font-size: clamp(44px, 5.7vw, 74px); line-height: 1.02; }
   .site-footer nav { grid-column: 1 / -1; justify-content: flex-start; grid-row: 3; }
   .footer-bottom { flex-wrap: wrap; font-size: 8px; }
   .page-hero { padding: 52px 0 34px; }
-  .page-hero h1 { font-size: clamp(45px, 13vw, 66px); }
+  .page-hero h1 { font-size: clamp(34px, 10vw, 54px); overflow-wrap: normal; }
   .page-hero > p { font-size: 14px; }
   .article-layout { grid-template-columns: 1fr; gap: 30px; padding-top: 28px; }
   .article-aside { position: static; grid-row: 1; }

@@ -30,3 +30,37 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
 } else {
   revealItems.forEach((item) => item.classList.add('is-visible'));
 }
+
+const imageLightbox = document.querySelector('#image-lightbox');
+const lightboxImage = document.querySelector('#image-lightbox-image');
+const lightboxCaption = document.querySelector('#image-lightbox-caption');
+const lightboxClose = document.querySelector('[data-lightbox-close]');
+
+if (imageLightbox && lightboxImage && lightboxCaption && typeof imageLightbox.showModal === 'function') {
+  document.querySelectorAll('[data-image-preview]').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const image = trigger.querySelector('img');
+      if (!image) return;
+      lightboxImage.src = image.currentSrc || image.src;
+      lightboxImage.alt = image.alt;
+      lightboxCaption.textContent = trigger.dataset.previewCaption || image.alt;
+      imageLightbox.showModal();
+      lightboxClose?.focus();
+    });
+  });
+  lightboxClose?.addEventListener('click', () => imageLightbox.close());
+  imageLightbox.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      imageLightbox.close();
+    }
+  });
+  imageLightbox.addEventListener('cancel', (event) => {
+    event.preventDefault();
+    imageLightbox.close();
+  });
+  imageLightbox.addEventListener('click', (event) => {
+    if (event.target === imageLightbox) imageLightbox.close();
+  });
+  imageLightbox.addEventListener('close', () => { lightboxImage.removeAttribute('src'); });
+}
