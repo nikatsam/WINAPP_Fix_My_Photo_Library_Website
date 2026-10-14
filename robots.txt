@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nikatsam.github.io/WINAPP_Fix_My_Photo_Library_Website/sitemap.xml
