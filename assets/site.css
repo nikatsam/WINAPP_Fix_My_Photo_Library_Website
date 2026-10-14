@@ -179,6 +179,11 @@ h2 { margin-bottom: 0; font-size: clamp(44px, 5.7vw, 74px); line-height: 1.02; }
 .article-aside a { display: block; margin: 12px 0; color: #4f5b53; font-size: 11px; line-height: 1.5; }
 .qa-list { border-top: 1px solid var(--line); }
 .qa-item { border-bottom: 1px solid var(--line); }
+.guide-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 21px 0; color: var(--ink); }
+.guide-row b { font-size: 16px; }
+.guide-row small { display: inline-block; margin-top: 6px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.guide-row > span:last-child { font-size: 20px; transition: transform .2s ease; }
+.guide-row:hover > span:last-child { transform: translate(3px, -3px); }
 .qa-item h2 { margin: 0; font: inherit; letter-spacing: normal; }
 .qa-item summary { display: flex; justify-content: space-between; gap: 22px; padding: 22px 0; color: var(--ink); cursor: pointer; list-style: none; font-size: 17px; font-weight: 650; }
 .qa-item summary::-webkit-details-marker { display: none; }
